@@ -53,28 +53,39 @@ public class DsaMs1 {
                     DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
                     
                     String[] newRow = new String[5];
-                    //INSERT DATE
-                        newRow[0] = date.format(f);
-                    //INSERT STOCK LABEL
-                        newRow[1] = "New";
-                    //INSERT PURCHASE STATUS
-                         newRow[4]="On-hand";
-                     //INSERT ENGINE NUMBER    
+                  
                     while(true){    
                     System.out.print("Insert Engine Number: ");
                         String engineNumber = sc.nextLine();
-                        if(isEngineNumberFound(engineNumber, inventory)){
+                        if(engineNumber.trim().isEmpty()){
+                            System.out.println("Please input valid engine ID");
+                        }else if(isEngineNumberFound(engineNumber, inventory)){
                            System.out.println("Engine Number already exists, please try again");
                         }else{
                            newRow[3]=engineNumber;
                            break;
                         }
                     }   
-                        
+                         
                     //INSERT BRAND
-                    System.out.print("Insert Brand: ");
-                        newRow[2] = sc.nextLine();
-                   
+                    while(true){
+                        System.out.print("Insert Brand: ");
+                        String brand = sc.nextLine();
+                       
+                            if (brand.trim().isEmpty()){
+                                System.out.println("Please input valid Brand");
+                            }else{
+                                newRow[2]=brand;
+                                break;
+                           }
+                        }    
+                     //INSERT DATE
+                        newRow[0] = date.format(f);
+                    //INSERT STOCK LABEL
+                        newRow[1] = "New";
+                    //INSERT PURCHASE STATUS
+                         newRow[4]="On-hand";
+                     //INSERT ENGINE NUMBER    
                     
                   
                     inventory.add(newRow);
