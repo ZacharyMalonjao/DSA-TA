@@ -201,10 +201,10 @@ public class DsaMs1 {
                                     String newEngineNumber = sc.nextLine(); // Get new input
 
                                     // Check if the engine number is valid
-                                    if (isEngineNumberFound(newEngineNumber, inventory)) {
-                                        System.out.println("Engine Number already exists, please try again");
-                                    } else if (newEngineNumber.trim().isEmpty()) {
+                                    if (newEngineNumber.trim().isEmpty()) {
                                         System.out.println("Engine number cannot be empty");
+                                    } else if (isEngineNumberFound(newEngineNumber, inventory)) {
+                                        System.out.println("Engine Number already exists, please try again");
                                     } else {
                                         edit(idToEdit, 3, newEngineNumber, inventory);
                                         printData(inventory);
@@ -269,12 +269,12 @@ public class DsaMs1 {
                                     if(record[4].equals("On-hand")){
                                         edit(idToEdit, 4, "Sold", inventory);
                                         printData(inventory);
-                                        System.out.println("\nStatus automaticall changed from On-hand to Sold ");
+                                        System.out.println("\nStatus automatically changed from On-hand to Sold ");
                                         break;
                                     }else{
                                         edit(idToEdit, 4, "On-hand", inventory);
                                         printData(inventory);
-                                        System.out.println("\nStatus automaticall changed from Sold to On-hand ");
+                                        System.out.println("\nStatus automatically changed from Sold to On-hand ");
                                         break;
                                     }
                                 }
