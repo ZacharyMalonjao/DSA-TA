@@ -184,7 +184,9 @@ public class DsaMs1 {
 
                 // Search it, and then decision if null or not
                 String[] record = searchRecord(idToEdit, inventory);
-                if (record != null) {
+                 if (idToEdit.trim().isEmpty()) {
+                    System.out.println("Record cannot have an empty ID");
+                }else if (record != null) {
                     boolean editing = true; // Flag to control the editing loop
 
                     while (editing) {
@@ -285,9 +287,7 @@ public class DsaMs1 {
                         // If we reach here, it means a valid case was handled
                         editing = false; // Exit the editing loop
                     }
-                } else if (idToEdit.trim().isEmpty()) {
-                    System.out.println("Record cannot have an empty ID");
-                } else {
+                }  else {
                     System.out.println("Record with " + idToEdit + " not found");
                 }
                 break;
