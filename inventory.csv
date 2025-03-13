@@ -49,4 +49,4 @@ Date Entered,Stock Label,Brand,Engine Number,Status
 02/03/2025,New,e,e,Sold
 01/01/2022,New,Kawasaki,123,On-hand
 03/12/2025,New,Kawasaki,124,On-hand
-03/13/2025,New,q,1234,Sold
+03/13/2025,Old,q,1234,Sold

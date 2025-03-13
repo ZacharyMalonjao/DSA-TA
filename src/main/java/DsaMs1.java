@@ -184,46 +184,15 @@ public class DsaMs1 {
 
                         while (editing) {
                             // Ask user which one they'd like to edit
-                            System.out.println("Type which element you wish to edit: (Date, Label, Engine Number, Brand or Status)");
+                            System.out.println("Type the corresponding number of the element you want to edit:");
+                            System.out.println("Label  1");
+                            System.out.println("Brand  2");
+                            System.out.println("Status 3");
+                            System.out.print("Insert number: ");
                             String elementToEdit = sc.nextLine().trim(); // Trim whitespace
 
-                            switch (elementToEdit.toLowerCase()) {
-                                case "engine number":
-                                    while (true) {
-                                        System.out.print("Insert new Engine Number: ");
-                                        String newEngineNumber = sc.nextLine().trim(); // Get new input and trim
-
-                                        // Check if the engine number is valid
-                                        if (isEngineNumberFound(newEngineNumber, inventory)) {
-                                            System.out.println("Engine Number already exists, please try again");
-                                        } else if (newEngineNumber.trim().isEmpty()) {
-                                            System.out.println("Engine number cannot be empty");
-                                        } else {
-                                            edit(idToEdit, 3, newEngineNumber, inventory);
-                                            printData(inventory);
-                                            System.out.println("Updated Successfully");
-                                            break; // Exit the loop if the engine number is valid
-                                        }
-                                    }
-                                    break;
-
-                                case "date":
-                                    // Implement date editing logic here
-                                    while (true) {
-                                        System.out.print("Insert new date (Please strictly input as mm/dd/yyyy): ");
-                                        String newDate = sc.nextLine().trim(); // Trim whitespace
-                                        if (isValidDate(newDate)) {
-                                            edit(idToEdit, 0, newDate, inventory);
-                                            printData(inventory);
-                                            System.out.println("\nEdit successful");
-                                            break;
-                                        } else {
-                                            System.out.println("Please strictly input as mm/dd/yyyy");
-                                        }
-                                    }
-                                    break;
-
-                                case "label":
+                            switch (elementToEdit) {                           
+                                case "1":
                                     while (true) {                                
                                         if (record[1].equals("Old")) {
                                             edit(idToEdit, 1, "New", inventory);
@@ -239,7 +208,7 @@ public class DsaMs1 {
                                     }
                                     break;
 
-                                case "brand":
+                                case "2":
                                     while (true) {
                                         System.out.print("Insert new brand name: ");
                                         String newBrand = sc.nextLine().trim(); // Trim whitespace
@@ -254,7 +223,7 @@ public class DsaMs1 {
                                     }
                                     break;
 
-                                case "status":
+                                case "3":
                                     while (true) {
                                         if (record[4].equals("On-hand")) {
                                             edit(idToEdit, 4, "Sold", inventory);
@@ -271,7 +240,7 @@ public class DsaMs1 {
                                     break;
 
                                 default:
-                                    System.out.println("Please input either Date, Label, Engine Number, Brand or Status");
+                                    System.out.println("Please input either Label, Brand or Status");
                                     continue; // Continue the loop to ask for the element again
                             }
 
