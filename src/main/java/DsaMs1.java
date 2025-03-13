@@ -180,15 +180,24 @@ public class DsaMs1 {
                     }
                     break;
 
-                case "5": // edit
-                    System.out.println("Input engine number of record you want to edit: ");
-                    String idToEdit = sc.nextLine().trim(); // Trim whitespace
+               case "5": // edit
+                String idToEdit = ""; // Initialize the ID variable
+                boolean isValidInput = false; // Flag to check if the input is valid
 
-                    // Search it, and then decision if null or not
-                    String[] record = searchRecord(idToEdit, inventory);
+                while (!isValidInput) { // Loop until valid input is received
+                    System.out.println("Input engine number of record you want to edit: ");
+                    idToEdit = sc.nextLine().trim(); // Trim whitespace
+
+                    // Check if the input is empty
                     if (idToEdit.trim().isEmpty()) {
                         System.out.println("Record cannot have an empty ID");
-                    } else if (record != null) {
+                        continue; // Ask for input again
+                    }
+
+                    // Search for the record
+                    String[] record = searchRecord(idToEdit, inventory);
+                    if (record != null) {
+                        isValidInput = true; // Set to true to exit the input loop
                         boolean editing = true; // Flag to control the editing loop
 
                         while (editing) {
@@ -200,9 +209,9 @@ public class DsaMs1 {
                             System.out.print("Insert number: ");
                             String elementToEdit = sc.nextLine().trim(); // Trim whitespace
 
-                            switch (elementToEdit) {                           
+                            switch (elementToEdit) {
                                 case "1":
-                                    while (true) {                                
+                                    while (true) {
                                         if (record[1].equals("Old")) {
                                             edit(idToEdit, 1, "New", inventory);
                                             printData(inventory);
@@ -257,9 +266,10 @@ public class DsaMs1 {
                             editing = false; // Exit the editing loop
                         }
                     } else {
-                        System.out.println("Record with " + idToEdit + " not found");
+                        System.out.println("Record with " + idToEdit + " not found. Please try again.");
                     }
-                    break;
+                }
+                break;
 
                 case "6":
                     isDone = true;
