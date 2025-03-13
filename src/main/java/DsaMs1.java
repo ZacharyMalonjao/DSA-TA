@@ -55,6 +55,14 @@ public class DsaMs1 {
                     LocalDate date = LocalDate.now();
                     DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
                     String[] newRow = new String[5];
+                    
+                    // initialize new stock with default values
+                    // INSERT DATE
+                    newRow[0] = date.format(f);
+                    // INSERT STOCK LABEL
+                    newRow[1] = "New";
+                    // INSERT PURCHASE STATUS
+                    newRow[4] = "On-hand";
                   
                     while (true) {    
                         System.out.print("Insert Engine Number: ");
@@ -64,7 +72,7 @@ public class DsaMs1 {
                         } else if (isEngineNumberFound(engineNumber, inventory)) {
                             System.out.println("Engine Number already exists, please try again");
                         } else {
-                            newRow[3] = engineNumber;
+                            newRow[3] = engineNumber; // engine id
                             break;
                         }
                     }   
@@ -80,13 +88,6 @@ public class DsaMs1 {
                             break;
                         }
                     }    
-                    
-                    // INSERT DATE
-                    newRow[0] = date.format(f);
-                    // INSERT STOCK LABEL
-                    newRow[1] = "New";
-                    // INSERT PURCHASE STATUS
-                    newRow[4] = "On-hand";
                     
                     inventory.add(newRow);
                     printData(inventory);
