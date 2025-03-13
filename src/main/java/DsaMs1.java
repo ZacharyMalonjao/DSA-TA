@@ -131,43 +131,52 @@ public class DsaMs1 {
                     printData(inventory);
                     break;
 
-                case "4": // delete
-                    System.out.print("Insert unique engine ID: ");
-                    String engineNumber = sc.nextLine().trim(); // Trim whitespace
-                    boolean found = false;
+               case "4": // delete
+                    boolean validInput = false; // Flag to check if the input is valid
+                    String engineNumber = "";
 
-                    for (int i = 0; i < inventory.size(); i++) {
-                        String[] row = inventory.get(i);
-                        if (row.length > 3 && row[3].equalsIgnoreCase(engineNumber)) { // Check length and compare
-                            found = true; // Mark as found
+                    while (!validInput) { // Loop until valid input is received
+                        System.out.print("Insert unique engine ID: ");
+                        engineNumber = sc.nextLine().trim(); // Trim whitespace
 
-                            if (row[1].equalsIgnoreCase("old") && row[4].equalsIgnoreCase("sold")) {
-                                boolean isValidChoice = false; // Initialize to false
-                                while (!isValidChoice) { // Change to while (!isValidChoice)
-                                    System.out.print("Do you wish to delete '" + String.join(",", row) + "'? (Yes or No) ");
-                                    String decision = sc.nextLine();
+                        boolean found = false;
 
-                                    if (decision.equalsIgnoreCase("yes")) {
-                                        inventory.remove(i);
-                                        printData(inventory);
-                                        updateCSV(inventory, file); // Update CSV after deletion
-                                        System.out.println("Successfully Deleted");
-                                        isValidChoice = true; // Set to true to exit the loop
-                                    } else if (decision.equalsIgnoreCase("no")) {
-                                        System.out.println("Deletion Cancelled...");
-                                        isValidChoice = true; // Set to true to exit the loop
-                                    } else {
-                                        System.out.println("Please choose either yes or no");
+                        for (int i = 0; i < inventory.size(); i++) {
+                            String[] row = inventory.get(i);
+                            if (row.length > 3 && row[3].equalsIgnoreCase(engineNumber)) { // Check length and compare
+                                found = true; // Mark as found
+
+                                if (row[1].equalsIgnoreCase("old") && row[4].equalsIgnoreCase("sold")) {
+                                    boolean isValidChoice = false; // Initialize to false
+                                    while (!isValidChoice) { // Change to while (!isValidChoice)
+                                        System.out.print("Do you wish to delete '" + String.join(",", row) + "'? (Yes or No) ");
+                                        String decision = sc.nextLine();
+
+                                        if (decision.equalsIgnoreCase("yes")) {
+                                            inventory.remove(i);
+                                            printData(inventory);
+                                            updateCSV(inventory, file); // Update CSV after deletion
+                                            System.out.println("Successfully Deleted");
+                                            isValidChoice = true; // Set to true to exit the loop
+                                        } else if (decision.equalsIgnoreCase("no")) {
+                                            System.out.println("Deletion Cancelled...");
+                                            isValidChoice = true; // Set to true to exit the loop
+                                        } else {
+                                            System.out.println("Please choose either yes or no");
+                                        }
                                     }
+                                } else if (row[1].equalsIgnoreCase("new") || row[4].equalsIgnoreCase("on-hand")) {
+                                    System.out.println("You can only delete stocks that are Old and Sold");
                                 }
-                            } else if (row[1].equalsIgnoreCase("new") || row[4].equalsIgnoreCase("on-hand")) {
-                                System.out.println("You can only delete stocks that are Old and Sold");
+                                break; // Exit the loop after processing the found item
                             }
-                            break; // Exit the loop after processing the found item
                         }
-                    }
-                    if (!found) {
-                        System.out.println("Not Found");
+
+                        if (!found) {
+                            System.out.println("Not Found. Please try again.");
+                        } else {
+                            validInput = true; // Set to true to exit the input loop if found
+                        }
                     }
                     break;
 
