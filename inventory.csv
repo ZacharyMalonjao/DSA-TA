@@ -1,6 +1,5 @@
 Date Entered,Stock Label,Brand,Engine Number,Status
 02/1/2023,Old,Honda,142QVTSIUR,On-hand
-02/1/2023,Old,Honda,PZCT1S00XE,Sold
 02/1/2023,Old,Honda,4VBTV8YNM7,Sold
 02/1/2023,Old,Honda,95AN3AWVF4,On-hand
 02/3/2023,Old,Kawasaki,483QHIM661,On-hand
@@ -49,6 +48,4 @@ Date Entered,Stock Label,Brand,Engine Number,Status
 03/7/2023,New,Kawasaki,392XSUBMUW,On-hand
 02/03/2025,New,e,e,Sold
 01/01/2022,New,Kawasaki,123,On-hand
-03/12/2025,New,,,On-hand
 03/12/2025,New,Kawasaki,124,On-hand
-01/01/2001,Old,Yamaha,1,On-hand
