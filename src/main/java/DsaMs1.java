@@ -149,9 +149,9 @@ public class DsaMs1 {
 
                                     if (decision.equalsIgnoreCase("yes")) {
                                         inventory.remove(i);
-                                        System.out.println("Successfully Deleted");
                                         printData(inventory);
                                         updateCSV(inventory, file); // Update CSV after deletion
+                                        System.out.println("Successfully Deleted");
                                         isValidChoice = true; // Set to true to exit the loop
                                     } else if (decision.equalsIgnoreCase("no")) {
                                         System.out.println("Deletion Cancelled...");
