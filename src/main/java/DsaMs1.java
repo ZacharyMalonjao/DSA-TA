@@ -40,19 +40,18 @@ public class DsaMs1 {
         while (!isDone) {
             System.out.println("----------------------------");
             System.out.println("Please input which number corresponds to the action you want to do:");
-            System.out.println("Add    1");
-            System.out.println("Search 2");
-            System.out.println("Sort   3");
-            System.out.println("Delete 4");
-            System.out.println("Edit   5");
-            System.out.println("Exit   6");
+            System.out.println("1: Add");
+            System.out.println("2: Search");
+            System.out.println("3: Sort");
+            System.out.println("4: Delete");
+            System.out.println("5: Edit");
+            System.out.println("6: Exit");
             System.out.print("Insert your number: ");
             
             String command = sc.nextLine(); // Read user input as a string
 
             switch (command) {
-                case "1":
-                    // Add functionality
+                case "1": // add
                     LocalDate date = LocalDate.now();
                     DateTimeFormatter f = DateTimeFormatter.ofPattern("MM/dd/yyyy");
                     String[] newRow = new String[5];
@@ -105,9 +104,8 @@ public class DsaMs1 {
                     }
                     break;
 
-                case "2":
-                    // Search functionality
-                    System.out.print("Insert criteria you want to search: (it can be a date, stock label, brand, engine number or status) ");
+                case "2": // search
+                    System.out.print("Input a keyword in order to search for a specific entry ");
                     String toSearch = sc.nextLine().trim(); // Trim whitespace
                     boolean isFound = false;
 
@@ -128,14 +126,12 @@ public class DsaMs1 {
                     }
                     break;
 
-                case "3":             
-                    // Sort functionality
+                case "3": // sort
                     mergeSort(inventory);
                     printData(inventory);
                     break;
 
-                case "4":
-                    // Delete functionality
+                case "4": // delete
                     System.out.print("Insert unique engine ID: ");
                     String engineNumber = sc.nextLine().trim(); // Trim whitespace
                     boolean found = false;
@@ -175,8 +171,7 @@ public class DsaMs1 {
                     }
                     break;
 
-                case "5":
-                    // Edit functionality
+                case "5": // edit
                     System.out.println("Input engine number of record you want to edit: ");
                     String idToEdit = sc.nextLine().trim(); // Trim whitespace
 
